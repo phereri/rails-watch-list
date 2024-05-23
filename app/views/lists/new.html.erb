@@ -1,6 +1,6 @@
 <div class="d-flex flex-row justify-content-between mb-3">
   <h1>Create a new list</h1>
-  <%= link_to 'Back to lists', lists_path, class: 'btn btn-secondary d-flex align-items-center' %>
+  <%= link_to 'Back to lists', root_path, class: 'btn btn-secondary d-flex align-items-center' %>
 </div>
 <%= simple_form_for @list do |f| %>
   <%= f.input :name %>
