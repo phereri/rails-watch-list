@@ -11,11 +11,12 @@ Rails.application.routes.draw do
   resources :bookmarks, only: %i[destroy]
   # Defines the root path route ("/")
   root "lists#index"
+  get 'lists/:id', to: 'bookmarks#new'
+  post 'lists/:id', to: 'bookmarks#create'
   # get 'lists', to: 'lists#index'
   # get 'lists/new', to: 'lists#new'
   # post 'lists', to: 'lists#create'
   # get 'lists/:id', to: 'lists#show', as: 'list'
   # get 'lists/:id', to: 'bookmarks#index', as: 'bookmarks'
   # get 'lists/:id/bookmarks/new', to: 'bookmarks#new', as: 'bookmarks_new'
-  # post 'lists/:id', to: 'bookmarks#create'
 end
