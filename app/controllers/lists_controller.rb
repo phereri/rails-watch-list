@@ -8,6 +8,7 @@ class ListsController < ApplicationController
   end
 
   def show
+    @movies = Movie.all
     @list = List.find(params[:id])
   end
 

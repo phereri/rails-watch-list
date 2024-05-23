@@ -1,7 +1,7 @@
 class BookmarksController < ApplicationController
-  def index
-    @bookmarks = Bookmark.all
-  end
+  # def index
+  #   @bookmarks = Bookmark.all
+  # end
 
   def new
     @list = List.find(params[:list_id])
@@ -15,7 +15,7 @@ class BookmarksController < ApplicationController
     if @bookmark.save
       redirect_to list_path(@list)
     else
-      render 'lists/show', status: :unprocessable_entity
+      redirect_to list_path(@list), status: :see_other
     end
   end
 
