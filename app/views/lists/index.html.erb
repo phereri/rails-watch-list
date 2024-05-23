@@ -1,0 +1,12 @@
+<div class="d-flex flex-row justify-content-between mb-3">
+  <h1>Lists</h1>
+  <%= link_to 'Create a new list', new_list_path, class: 'btn btn-primary d-flex align-items-center' %>
+</div>
+
+
+<% @lists.each do |list| %>
+  <a href="<%=list_path(list)%>" class="card card-body mb-3 text-decoration-none d-flex flex-row align-items-center">
+    <i class="fa-regular fa-circle-dot"></i>
+    <span class='ms-2'><%= list.name %></span>
+  </a>
+<% end %>

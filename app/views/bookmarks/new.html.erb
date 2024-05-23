@@ -1,0 +1,9 @@
+<div class="d-flex flex-row justify-content-between mb-3">
+  <h1>Add a bookmark to <%= @list.name %> list</h1>
+  <%= link_to 'Back to list', list_path(@list), class: 'btn btn-secondary d-flex align-items-center' %>
+</div>
+<%= simple_form_for [@list, @bookmark] do |f| %>
+  <%= f.input :comment %>
+  <%= f.association :movie %>
+  <%= f.button :submit, class: 'btn btn-primary' %>
+<% end %>

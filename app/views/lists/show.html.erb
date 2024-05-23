@@ -1,0 +1,37 @@
+<div class="d-flex flex-row justify-content-between mb-3">
+  <h1 class='flex-grow-1'>Details</h1>
+  <%= link_to 'Add a bookmark', new_list_bookmark_path(@list), class: 'btn btn-primary d-flex align-items-center' %>
+  <%= link_to 'Back to lists', lists_path, class: 'ms-3 btn btn-secondary d-flex align-items-center' %>
+</div>
+
+<div class="row row-cols-1 row-cols-md-2 g-4">
+  <% @list.bookmarks.each do |bookmark| %>
+    <div class="col-lg-6 col-md-12">
+      <div class="card h-100" style="max-width: 540px;">
+        <div class="row g-0">
+          <div class="col-4 h-100">
+            <img src="<%= bookmark.movie.poster_url %>" class="img-fluid rounded-start" style="height: 100%;"alt="...">
+          </div>
+          <div class="col-8">
+            <div class="card-body">
+              <div class='d-flex align-items-center'>
+                <h5 class="card-title flex-grow-1"><%= bookmark.movie.title %></h5>
+                <i class='fa-solid fa-star text-warning'></i>
+                <span><%= bookmark.movie.rating.round(1) %></span>
+              </div>
+              <p class="card-text" style='display: -webkit-box; -webkit-line-clamp: 7; -webkit-box-orient:  vertical; overflow: hidden;'><%= bookmark.movie.overview %></p>
+              <div class="d-flex align-items-center">
+                <i class="fa-solid fa-quote-left"></i>
+                <span class="card-text ms-2 flex-grow-1 text-truncate"><small class="text-muted"><%=bookmark.comment%></small></span>
+                <%= link_to "",
+                  bookmark_path(bookmark),
+                  data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: 'fa-regular fa-trash-can text-decoration-none text-danger' %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  <% end %>
+</div>
