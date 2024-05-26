@@ -4,9 +4,33 @@
 </div>
 
 
-<% @lists.each do |list| %>
-  <a href="<%=list_path(list)%>" class="card card-body mb-3 text-decoration-none d-flex flex-row align-items-center">
-    <i class="fa-regular fa-circle-dot"></i>
-    <span class='ms-2'><%= list.name %></span>
-  </a>
-<% end %>
+<div class="row row-cols-1 row-cols-md-3 g-4">
+  <% @lists.each do |list| %>
+
+    <div class="col-lg-6 col-md-12">
+      <div class="card h-100" style='max-width: 540px;'>
+        <div class="card bg-dark text-white">
+          <a href="<%=list_path(list)%>"
+            class="card card-body text-decoration-none d-flex flex-row align-items-center text-truncate p-0"
+            style='height: 300px;'>
+            <img src="<%= list.photo.attached? ? cl_image_path(list.photo.key) : image_path("https://wallpapers.com/images/high/light-gray-background-0ae3nd9hkqrywmpz.webp") %>"
+              class="card-img" alt="image"/>
+            <div class="card-img-overlay text-black text-center row">
+              <div class="col-12 text-truncate">
+                <span class="card-title fs-1"
+                style='color: white; text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;'>
+                  <%= list.name %>
+                </span>
+              </div>
+            </div>
+          </a>
+        </div>
+        <%# <a href="list_path(list)"
+          class="card card-body text-decoration-none d-flex flex-row align-items-center text-truncate">
+          <i class="fa-regular fa-circle-dot"></i>
+          <span class='ms-2'>list.name</span>
+        </a> %>
+      </div>
+    </div>
+  <% end %>
+</div>
